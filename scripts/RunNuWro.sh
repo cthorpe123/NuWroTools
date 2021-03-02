@@ -16,15 +16,17 @@
 ############################################################################
 
 # Unique name for the sample
-sample_name=uboone_numi_rhc_test
+sample_name=uboone_numi_fhc_intrinsic_nue_test
 
 # Which beam are you using?
 #beam=bnb
 #beam=numi_fhc
-beam=numi_rhc
+#beam=numi_rhc
+beam=numi_fhc_intrinsic_nue
+#beam=numi_rhc_intrinsic_nue
 
 # Path to nuwro params file you want to use
-nuwro_params=/uboone/app/users/cthorpe/NuWro/nuwro/params.txt
+nuwro_params=/uboone/app/users/cthorpe/test/nuwro/params.txt
 
 # Path to putput directory (should be on pnfs)
 out_dir=/pnfs/uboone/scratch/users/cthorpe/samples/
@@ -36,7 +38,7 @@ tmp_dir=/uboone/app/users/cthorpe/NuWro/temp/
 work_dir=/uboone/app/users/cthorpe/NuWro/workdir/
 
 # Path to directory contining nuwro_to_hepmc*.C
-macro_dir=/uboone/app/users/cthorpe/NuWro_Tools/NuWroTools/convert_hepmc/
+macro_dir=/uboone/app/users/cthorpe/test/NuWro_Tools/NuWroTools/convert_hepmc/
 
 ######### Don't change anything below here ###############
 
@@ -115,11 +117,11 @@ if [ "$beam" == "bnb" ]; then
 nuwro -i ${nuwro_params} -p "@target/MicroBooNE.txt" -p "@${NUWRO_FLUX_DIR}/uBooNE_Booster_fhc.txt" -o ${nuwrofilename} > NuWro_Out.log
 
 #NuMI FHC
-elif [ "$beam" == "numi_fhc" ]; then
+elif [ "$beam" == "numi_fhc" ] || [ "$beam" == "numi_fhc_intrinsic_nue" ]; then
 nuwro -i ${nuwro_params} -p "@target/MicroBooNE.txt" -p "@${NUWRO_FLUX_DIR}/uBooNE_Numi_fhc.txt" -o ${nuwrofilename} > NuWro_Out.log
 
 #NuMI RHC
-elif [ "$beam" == "numi_rhc" ]; then
+elif [ "$beam" == "numi_rhc" ] || [ "$beam" == "numi_rhc_intrinsic_nue" ]; then
 nuwro -i ${nuwro_params} -p "@target/MicroBooNE.txt" -p "@${NUWRO_FLUX_DIR}/uBooNE_Numi_fhc.txt" -o ${nuwrofilename} > NuWro_Out.log
 
 else 
@@ -154,6 +156,12 @@ if [ "$beam" == "numi_fhc" ] || [ "$beam" == "numi_rhc" ]; then
 root -l -b <<-EOF
 .L nuwro_to_hepmc_numi.C
 nuwro_to_hepmc_numi( "${tmp_dir}/${sample_name}/nuwro/" , "${sample_name}" ,  "${tmp_dir}/${sample_name}/hepmc/" )
+EOF
+
+elif [ "$beam" == "numi_fhc_intrinsic_nue" ] || [ "$beam" == "numi_rhc_intrinsic_nue" ]; then
+root -l -b <<-EOF
+.L nuwro_to_hepmc_numi_pure_nue.C
+nuwro_to_hepmc_numi_pure_nue( "${tmp_dir}/${sample_name}/nuwro/" , "${sample_name}" ,  "${tmp_dir}/${sample_name}/hepmc/" )
 EOF
 
 elif [ "$beam" == "bnb" ]; then
