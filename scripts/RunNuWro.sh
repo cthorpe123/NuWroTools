@@ -16,14 +16,14 @@
 ############################################################################
 
 # Unique name for the sample
-sample_name=uboone_numi_fhc_intrinsic_nue_test
+sample_name=uboone_numi_rhc_intrinsic_nue_test
 
 # Which beam are you using?
 #beam=bnb
 #beam=numi_fhc
 #beam=numi_rhc
-beam=numi_fhc_intrinsic_nue
-#beam=numi_rhc_intrinsic_nue
+#beam=numi_fhc_intrinsic_nue
+beam=numi_rhc_intrinsic_nue
 
 # Path to nuwro params file you want to use
 nuwro_params=/uboone/app/users/cthorpe/test/nuwro/params.txt

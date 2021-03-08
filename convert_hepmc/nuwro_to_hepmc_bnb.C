@@ -5,7 +5,7 @@
 #include "TTree.h"
 #include "TFile.h"
 
-void nuwro_to_hepmc_bnb(std::string indir , std::string nuwro_file_name , std::string outdir) {
+void nuwro_to_hepmc_bnb(std::string indir , std::string nuwro_file_name , std::string outdir, int eventsperfile=100) {
 
 	//assumes your file is nuwro_file_name.root
 
@@ -150,18 +150,20 @@ void nuwro_to_hepmc_bnb(std::string indir , std::string nuwro_file_name , std::s
 
 	double entries = t->GetEntries();
 
+
+
 	for (size_t i = 0; i < entries; i++){
 
 		if (i % 1000 == 0) std::cout << "At entry " << i << std::endl;
 
-		if (i % 50 == 0) {
+		if (event_count % eventsperfile == 0) {
 
 			//  std::cout << outdir+nuwro_file_name+"_"+std::to_string(i/50)+".hepmc" << std::endl;
 
 			// Close and open a new file
 
 			_hepmc_file.close();
-			_hepmc_file.open(outdir + nuwro_file_name + "_" + std::to_string(i / 50) + ".hepmc");
+			_hepmc_file.open(outdir + nuwro_file_name + "_" + std::to_string(event_count / eventsperfile) + ".hepmc");
 
 
 		}

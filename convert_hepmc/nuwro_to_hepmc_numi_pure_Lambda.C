@@ -8,7 +8,7 @@
 
 
 
-void nuwro_to_hepmc_numi_pure_Lambda(std::string indir , std::string nuwro_file_name , std::string outdir) {
+void nuwro_to_hepmc_numi_pure_Lambda(std::string indir , std::string nuwro_file_name , std::string outdir, int eventsperfile=100) {
 
 	std::string cmd = "mkdir -p " + outdir;
 	gSystem->Exec(cmd.c_str());
@@ -154,14 +154,12 @@ t->SetBranchAddress("post.x", post_x);
 
     	if (i % 1000 == 0) std::cout << "At entry " << i << std::endl;
 
-        if (i_collected % 50 == 0) {
-
-	  //  std::cout << outdir+nuwro_file_name+"_"+std::to_string(i/events_per_file)+".hepmc" << std::endl;
+        if (i_collected % eventsperfile == 0) {
 
           // Close and open a new file
 
           _hepmc_file.close();
-          _hepmc_file.open(outdir + nuwro_file_name + "_" + std::to_string(i_collected / 50) + ".hepmc");
+          _hepmc_file.open(outdir + nuwro_file_name + "_" + std::to_string(i_collected / eventsperfile) + ".hepmc");
         
 
 	}
@@ -256,7 +254,7 @@ t->SetBranchAddress("post.x", post_x);
 	
    
 
-std::cout << i_collected << " events ready" << std::endl;
+	std::cout << i_collected << " events ready" << std::endl;
 
 
         std::ofstream output("eventcount.meta");
