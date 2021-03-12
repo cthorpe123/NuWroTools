@@ -16,29 +16,29 @@
 ############################################################################
 
 # Unique name for the sample
-sample_name=uboone_numi_rhc_intrinsic_nue_test
+sample_name=uboone_test2
 
 # Which beam are you using?
 #beam=bnb
-#beam=numi_fhc
+beam=numi_fhc
 #beam=numi_rhc
 #beam=numi_fhc_intrinsic_nue
-beam=numi_rhc_intrinsic_nue
+#beam=numi_rhc_intrinsic_nue
 
 # Path to nuwro params file you want to use
 nuwro_params=/uboone/app/users/cthorpe/test/nuwro/params.txt
 
 # Path to putput directory (should be on pnfs)
-out_dir=/pnfs/uboone/scratch/users/cthorpe/samples/
+out_dir=/pnfs/uboone/scratch/users/cthorpe/samples
 
 # Dir to store files before moving to final location
-tmp_dir=/uboone/app/users/cthorpe/NuWro/temp/
+tmp_dir=/uboone/app/users/cthorpe/NuWro/temp
 
 # Dir to run NuWro inside
-work_dir=/uboone/app/users/cthorpe/NuWro/workdir/
+work_dir=/uboone/app/users/cthorpe/NuWro/workdir
 
 # Path to directory contining nuwro_to_hepmc*.C
-macro_dir=/uboone/app/users/cthorpe/test/NuWro_Tools/NuWroTools/convert_hepmc/
+macro_dir=/uboone/app/users/cthorpe/test/NuWro_Tools/NuWroTools/convert_hepmc
 
 ######### Don't change anything below here ###############
 
@@ -138,7 +138,7 @@ mv ${work_dir}/${nuwrofilename}* ${sample_name}/nuwro/
 mv ${work_dir}/NuWro_Out.log ${sample_name}/nuwro/
 
 # Move file with POT into output
-mv ${work_dir}POTinfo.txt ${sample_name}/meta/
+mv ${work_dir}/POTinfo.txt ${sample_name}/meta/
 
 nuwroeventfile=${tmp_dir}/${sample_name}/nuwro/${nuwrofilename}
 
