@@ -7,7 +7,7 @@
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
 <!ENTITY username "cthorpe">
-<!ENTITY name "convert_events_uboone_numi_no_overlay_TEST">
+<!ENTITY name "convert_events_uboone_numi_rhc_Lambda_pt3">
 <!ENTITY tag "nuwro">
 <!ENTITY projectout   "/pnfs/uboone/scratch/users/cthorpe/v08_00_00_28/work">
 <!ENTITY logout       "/pnfs/uboone/scratch/users/cthorpe/v08_00_00_28">
@@ -19,7 +19,7 @@
 
 <project name="&name;">
 
-<numevents>250</numevents>
+<numevents>49500</numevents>
 
 <os>SL7</os>
 
@@ -39,15 +39,16 @@
 <fcl>/pnfs/uboone/resilient/users/cthorpe/nuwro_converter/prodhepmc_uboone.fcl</fcl>
 <outdir>&logout;/&name;_all/out/&release;</outdir>
 <logdir>&logout;/&name;_all/log/&release;</logdir>
+<bookdir>/uboone/data/users/cthorpe/gridjobs/convert/&name;</bookdir>
 <workdir>&projectout;</workdir>
-<numjobs>5</numjobs>
+<numjobs>495</numjobs>
 <maxfilesperjob>1</maxfilesperjob>
 <filelistdef>1</filelistdef>
 <datafiletypes>root</datafiletypes>
 <datatier>generated</datatier>
 <jobsub> --disk=10GB --expected-lifetime=4h 
--f /pnfs/uboone/scratch/users/cthorpe/samples/uboone_numi_rhc_enriched_overlay_pt1/hepmc/hepmc_files.list
--f /pnfs/uboone/scratch/users/cthorpe/samples/uboone_numi_rhc_enriched_overlay_pt1/meta/hepmc_POT.meta
+-f /pnfs/uboone/scratch/users/cthorpe/samples//uboone_numi_rhc_Lambda3/meta/hepmc_POT.meta
+-f /pnfs/uboone/scratch/users/cthorpe/samples//uboone_numi_rhc_Lambda3/hepmc/hepmc_files.list
 </jobsub>
 <defname>&name;_gen</defname>
 <memory>4000</memory>

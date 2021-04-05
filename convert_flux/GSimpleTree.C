@@ -79,14 +79,15 @@ void GSimpleTree::Loop()
    if (fChain == 0) return;
 
 
-   TFile *outfile = new TFile("sbnd_flux_nuwro.root", "RECREATE", "SBND Flux");
-   TTree *outtree = new TTree("h3002", "SBND Flux");
-   Float_t Enu, nnu[3], xnu, ynu, norm;
+   TFile *outfile = new TFile("uboone_flux_nuwro.root", "RECREATE", "MicroBooNE Flux");
+   TTree *outtree = new TTree("h3002", "MicroBooNE Flux");
+   Float_t Enu, nnu[3], xnu, ynu, znu, norm;
    Int_t mode;
    outtree->Branch( "Enu", &Enu, "Enu/F" );
    outtree->Branch( "nnu", &nnu, "nnu[3]/F" );
    outtree->Branch( "xnu", &xnu, "xnu/F" );
    outtree->Branch( "ynu", &ynu, "ynu/F" );
+   outtree->Branch( "znu", &znu, "znu/F" );
    outtree->Branch( "mode", &mode, "mode/I" );
    outtree->Branch( "norm", &norm, "norm/F" );
 
@@ -119,8 +120,10 @@ void GSimpleTree::Loop()
 
       mode = nuwro_pdg;
       Enu = E; // GeV 
-      xnu = ip.x * 100; // from m to cm, as NuWro expects cm
-      ynu = ip.y * 100; // from m to cm, as NuWro expects cm
+      xnu = vtxx * 100; // from m to cm, as NuWro expects cm
+      ynu = vtxy * 100; // from m to cm, as NuWro expects cm
+      znu = vtxz * 100; // from m to cm, as NuWro expects cm
+
       nnu[0] = px/p; // unit vector components 
       nnu[1] = py/p; // unit vector components 
       nnu[2] = pz/p; // unit vector components 

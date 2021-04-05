@@ -40,6 +40,7 @@
 <fcl>/pnfs/uboone/resilient/users/cthorpe/nuwro_converter/prodhepmc_overlay_uboone.fcl</fcl>
 <outdir>&logout;/&name;_all/out/&release;</outdir>
 <logdir>&logout;/&name;_all/log/&release;</logdir>
+<bookdir>/uboone/data/users/cthorpe/gridjobs/convert/&name;</bookdir>
 <workdir>&projectout;</workdir>
 <numjobs>5</numjobs>
 <maxfilesperjob>1</maxfilesperjob>

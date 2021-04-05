@@ -16,29 +16,29 @@
 ############################################################################
 
 # Unique name for the sample
-sample_name=uboone_test2
+sample_name=uboone_numi_rhc_nue_test
 
 # Which beam are you using?
 #beam=bnb
-beam=numi_fhc
+#beam=numi_fhc
 #beam=numi_rhc
 #beam=numi_fhc_intrinsic_nue
-#beam=numi_rhc_intrinsic_nue
+beam=numi_rhc_intrinsic_nue
 
 # Path to nuwro params file you want to use
-nuwro_params=/uboone/app/users/cthorpe/test/nuwro/params.txt
+nuwro_params=/uboone/app/users/cthorpe/NuWro/NuWroTools/scripts/params.txt
 
 # Path to putput directory (should be on pnfs)
-out_dir=/pnfs/uboone/scratch/users/cthorpe/samples
+out_dir=/pnfs/uboone/scratch/users/cthorpe/samples/
 
 # Dir to store files before moving to final location
-tmp_dir=/uboone/app/users/cthorpe/NuWro/temp
+tmp_dir=/uboone/data/users/cthorpe/NuWro/temp/
 
 # Dir to run NuWro inside
-work_dir=/uboone/app/users/cthorpe/NuWro/workdir
+work_dir=/uboone/data/users/cthorpe/NuWro/work/
 
 # Path to directory contining nuwro_to_hepmc*.C
-macro_dir=/uboone/app/users/cthorpe/test/NuWro_Tools/NuWroTools/convert_hepmc
+macro_dir=/uboone/app/users/cthorpe/NuWro/NuWroTools/convert_hepmc/
 
 ######### Don't change anything below here ###############
 
@@ -77,8 +77,12 @@ fi
 echo
 echo -e "${BLUE}Preparing Temporary Output Directory${NC}"
 
+# Make sure tmp_dir and work_dir exist
+mkdir -p ${tmp_dir}
+mkdir -p ${work_dir}
 
 # If temporary output directory exists, empty it
+
 
 cd ${tmp_dir}
 

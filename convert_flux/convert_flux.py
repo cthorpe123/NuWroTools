@@ -8,7 +8,10 @@ ROOT.gSystem.Load("GSimpleTree_C.so")
 from ROOT import GSimpleTree
 from glob import glob
 
-pattern = "/pnfs/uboone/persistent/uboonebeam/bnb_gsimple/bnb_gsimple_fluxes_02.05.2018_463/converted_beammc_000*.root"
+#pattern = "/pnfs/uboone/persistent/uboonebeam/bnb_gsimple/bnb_gsimple_fluxes_02.05.2018_463/converted_beammc_000*.root"
+#pattern = "/pnfs/uboone/persistent/uboonebeam/bnb_gsimple/bnb_gsimple_fluxes_02.05.2018_463/converted_beammc_000*.root"
+pattern = "/pnfs/uboone/persistent/uboonebeam/bnb_gsimple/bnb_gsimple_fluxes_01.09.2019_463/converted_beammc_wincorr_100*.root"
+
 
 cflux = TChain('flux')
 cflux.Add(pattern)
