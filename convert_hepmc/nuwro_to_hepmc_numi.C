@@ -168,7 +168,7 @@ void nuwro_to_hepmc_numi(std::string indir , std::string nuwro_file_name , std::
 
 
       // Save the number of particles for this events (+1 for the neutrino)
-      _hepmc_file << i << " " << post_ + 1 << std::endl;
+      _hepmc_file << i << " " << post_ + in_ << std::endl;
 
       int ccnc = 0;
       if (!flag_cc) ccnc = 1;

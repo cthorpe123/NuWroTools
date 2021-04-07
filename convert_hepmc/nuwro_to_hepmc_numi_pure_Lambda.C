@@ -187,7 +187,7 @@ void nuwro_to_hepmc_numi_pure_Lambda(std::string indir , std::string nuwro_file_
       double nu_time = rand() / double(RAND_MAX) * RandomTimeOffset + GlobalTimeOffset;
 
       // Save the number of particles for this events (+1 for the neutrino)
-      _hepmc_file << i_collected << " " << post_ + 1 << std::endl;
+      _hepmc_file << i_collected << " " << post_ + in_ << std::endl;
 
       i_collected++;
 

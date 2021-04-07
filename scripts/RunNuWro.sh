@@ -16,14 +16,14 @@
 ############################################################################
 
 # Unique name for the sample
-sample_name=uboone_numi_rhc_nue_test
+sample_name=uboone_bnb_test
 
 # Which beam are you using?
-#beam=bnb
+beam=bnb
 #beam=numi_fhc
 #beam=numi_rhc
 #beam=numi_fhc_intrinsic_nue
-beam=numi_rhc_intrinsic_nue
+#beam=numi_rhc_intrinsic_nue
 
 # Path to nuwro params file you want to use
 nuwro_params=/uboone/app/users/cthorpe/NuWro/NuWroTools/scripts/params.txt
@@ -126,7 +126,7 @@ nuwro -i ${nuwro_params} -p "@target/MicroBooNE.txt" -p "@${NUWRO_FLUX_DIR}/uBoo
 
 #NuMI RHC
 elif [ "$beam" == "numi_rhc" ] || [ "$beam" == "numi_rhc_intrinsic_nue" ]; then
-nuwro -i ${nuwro_params} -p "@target/MicroBooNE.txt" -p "@${NUWRO_FLUX_DIR}/uBooNE_Numi_fhc.txt" -o ${nuwrofilename} > NuWro_Out.log
+nuwro -i ${nuwro_params} -p "@target/MicroBooNE.txt" -p "@${NUWRO_FLUX_DIR}/uBooNE_Numi_rhc.txt" -o ${nuwrofilename} > NuWro_Out.log
 
 else 
 echo -e "${RED} Unrecognized beam type set. Please use bnb for the BNB, numi_fhc for NuMI FHC, numi rhc for NuMI RHC${NC}"
